@@ -13,19 +13,22 @@
       支持记号：<code>k</code>（消耗1/产出1）、<code>p</code>（消耗1/产出1）、
       <code>yo</code>（消耗0/产出1）、<code>k2tog</code>（消耗2/产出1），
       以及可嵌套的 <code>(指令序列)*次数</code>，如 <code>((k yo)*2 k2tog)*3</code>。
+      多尺码倍数写作 <code>*{6|8|10}</code>：竖线分隔的正整数按尺码顺序分别取值，
+      项数须与尺码个数一致；普通 <code>*n</code> 对所有尺码生效，两种重复可互相嵌套。
       记号可用空格或逗号分隔，大小写不敏感。
     </p>
 
     <form id="check-form">
-      <label class="field">
-        <span>起针数</span>
-        <input type="number" id="cast-on" min="1" step="1" value="12" required>
-      </label>
+      <div class="field">
+        <span>尺码与起针数（按顺序，<code>*{...}</code> 依此顺序取值）</span>
+        <div id="sizes-list"></div>
+        <button type="button" id="add-size" class="small">＋ 添加尺码</button>
+      </div>
 
       <label class="field">
-        <span>每行指令（一行一条）</span>
+        <span>每行指令（一行一条，各尺码共用）</span>
         <textarea id="pattern" rows="8" spellcheck="false"
-          placeholder="(k2tog yo)*6&#10;p*12&#10;(k2tog)*6"></textarea>
+          placeholder="(k2tog yo)*{6|8|10}&#10;p*{12|16|20}&#10;(k2tog)*{6|8|10}"></textarea>
       </label>
 
       <div class="actions">
@@ -36,20 +39,7 @@
 
     <section id="result" hidden>
       <div id="summary"></div>
-      <div id="error-box" class="error" hidden></div>
-      <table id="rows-table" hidden>
-        <thead>
-          <tr>
-            <th>行号</th>
-            <th>指令</th>
-            <th>入针（可用）</th>
-            <th>消耗</th>
-            <th>产出</th>
-            <th>出针（剩余）</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div id="sizes-results" class="sizes-results"></div>
     </section>
   </main>
 
