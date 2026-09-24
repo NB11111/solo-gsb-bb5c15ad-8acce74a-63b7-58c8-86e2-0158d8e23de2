@@ -134,3 +134,121 @@ th {
 td:nth-child(2) {
   font-family: ui-monospace, Menlo, Consolas, monospace;
 }
+
+/* Tab 切换 */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.tab {
+  padding: 8px 18px;
+  border-radius: 6px 6px 0 0;
+  background: #d8d1c1;
+  color: #5a5145;
+}
+
+.tab.active {
+  background: #7a6c5d;
+  color: #fff;
+}
+
+.panel {
+  background: #fffdf8;
+  border: 1px solid #e2dccb;
+  border-radius: 6px;
+  padding: 18px 16px;
+}
+
+section.panel {
+  margin-top: 20px;
+}
+
+/* 多尺码输入行 */
+.size-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.size-row .size-name {
+  max-width: none;
+  flex: 1;
+}
+
+.size-row .size-cast-on {
+  flex: 1;
+}
+
+.size-row .remove-size {
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
+button.secondary {
+  background: #b0a48f;
+}
+
+.hint small,
+small.hint {
+  display: block;
+  margin-top: 6px;
+}
+
+/* 多尺码并排结果 */
+.size-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.size-card {
+  flex: 1 1 320px;
+  min-width: 300px;
+  border: 1px solid #e2dccb;
+  border-radius: 6px;
+  padding: 12px;
+  background: #fff;
+}
+
+.size-card.ok {
+  border-left: 4px solid #5f9a5f;
+}
+
+.size-card.bad {
+  border-left: 4px solid #c46a6a;
+}
+
+.size-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.size-status {
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.size-status.ok {
+  background: #e0efdd;
+  color: #2e6b2e;
+}
+
+.size-status.error {
+  background: #f8e1e1;
+  color: #a33;
+}
+
+.size-card table {
+  font-size: 0.85rem;
+}
+
+.size-card th,
+.size-card td {
+  padding: 5px 6px;
+}

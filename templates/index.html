@@ -16,7 +16,13 @@
       记号可用空格或逗号分隔，大小写不敏感。
     </p>
 
-    <form id="check-form">
+    <div class="tabs">
+      <button type="button" class="tab active" data-mode="single">单尺码校验</button>
+      <button type="button" class="tab" data-mode="sizes">多尺码校验</button>
+    </div>
+
+    <!-- 单尺码 -->
+    <form id="check-form" class="panel">
       <label class="field">
         <span>起针数</span>
         <input type="number" id="cast-on" min="1" step="1" value="12" required>
@@ -34,7 +40,34 @@
       </div>
     </form>
 
-    <section id="result" hidden>
+    <!-- 多尺码 -->
+    <form id="sizes-form" class="panel" hidden>
+      <div class="field">
+        <span>尺码（按顺序输入尺码名与各自起针数）</span>
+        <div id="size-rows"></div>
+        <div class="actions">
+          <button type="button" id="add-size" class="secondary">+ 添加尺码</button>
+        </div>
+      </div>
+
+      <label class="field">
+        <span>共用逐行指令（一行一条）</span>
+        <textarea id="sizes-pattern" rows="8" spellcheck="false"></textarea>
+        <small class="hint">
+          多尺码倍数写成 <code>*{6|8|10}</code>，竖线分隔的正整数按尺码顺序分别取值；
+          普通 <code>*n</code> 对所有尺码生效，两种重复可以嵌套，如
+          <code>((k yo)*2 k2tog)*{2|3|4}</code>。
+        </small>
+      </label>
+
+      <div class="actions">
+        <button type="submit">校验全部尺码</button>
+        <button type="button" id="fill-sizes-example">填入示例</button>
+      </div>
+    </form>
+
+    <!-- 单尺码结果 -->
+    <section id="result" class="panel" hidden>
       <div id="summary"></div>
       <div id="error-box" class="error" hidden></div>
       <table id="rows-table" hidden>
@@ -50,6 +83,13 @@
         </thead>
         <tbody></tbody>
       </table>
+    </section>
+
+    <!-- 多尺码结果 -->
+    <section id="sizes-result" class="panel" hidden>
+      <div id="sizes-summary"></div>
+      <div id="sizes-request-error" class="error" hidden></div>
+      <div id="size-cards" class="size-cards"></div>
     </section>
   </main>
 
